@@ -132,28 +132,35 @@
     }
 
     function aplicarFiltro(videos) {
-  const data = document.getElementById("data").value;
+  const dataInput = document.getElementById("data").value;
   const horaInicio = document.getElementById("hora-inicio").value;
   const horaFim = document.getElementById("hora-fim").value;
 
-  if (!data && !horaInicio && !horaFim) return videos;
+  if (!dataInput && !horaInicio && !horaFim) return videos;
 
   return videos.filter((video) => {
-    const nomeLimpo = video.replace(".mp4", "");
-    const [dataStr, horaStr] = nomeLimpo.split("_"); // Ex: 2025-07-29_09-15-01
+    const nomeLimpo = video.replace("replay_", "").replace(".mp4", "").replace("_web", "");
 
-    if (data && data !== dataStr) return false;
+    const [dataRaw, horaRaw] = nomeLimpo.split("_"); // Ex: 20250729_013434
+
+    const dataFormatada =
+      dataRaw.slice(0, 4) + "-" + dataRaw.slice(4, 6) + "-" + dataRaw.slice(6, 8); // 2025-07-29
+
+    const horaFormatada =
+      horaRaw.slice(0, 2) + ":" + horaRaw.slice(2, 4) + ":" + horaRaw.slice(4, 6); // 01:34:34
+
+    if (dataInput && dataFormatada !== dataInput) return false;
 
     if (horaInicio || horaFim) {
-      const videoDateTime = new Date(`${dataStr}T${horaStr.replace(/-/g, ":")}`); // Ex: 2025-07-29T09:15:01
+      const videoDateTime = new Date(`${dataFormatada}T${horaFormatada}`);
 
       if (horaInicio) {
-        const inicioDateTime = new Date(`${dataStr}T${horaInicio}:00`);
+        const inicioDateTime = new Date(`${dataFormatada}T${horaInicio}:00`);
         if (videoDateTime < inicioDateTime) return false;
       }
 
       if (horaFim) {
-        const fimDateTime = new Date(`${dataStr}T${horaFim}:59`);
+        const fimDateTime = new Date(`${dataFormatada}T${horaFim}:59`);
         if (videoDateTime > fimDateTime) return false;
       }
     }
@@ -161,6 +168,8 @@
     return true;
   });
 }
+
+
 
 
     function resetFiltro() {
