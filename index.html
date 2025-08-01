@@ -6,6 +6,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
   <title>ARENA 88 Sport Club</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+  <link rel="icon" href="favicon.png" type="image/png" />
+
   <style>
     body {
       background-color: #121212;
@@ -29,9 +31,9 @@
 
     /* Efeito ao passar o mouse */
     .navbar-brand:hover {
-      color: #ffc107;
+      color: #f1ead5;
       text-shadow: 0 0 8px rgba(255, 193, 7, 0.6);
-      transform: scale(1.02);
+      transform: scale(1.01);
       animation: pulseGlow 1.2s infinite alternate;
       cursor: pointer;
     }
@@ -128,7 +130,7 @@
 
     /* Quando o botão estiver ativo, aplicar borda dourada ao PNG */
     .btn-menu.active img {
-  filter: drop-shadow(0 0 0 rgba(255, 193, 7, 0.4)) drop-shadow(0 0 4px rgba(255, 193, 7, 0.8));
+  filter: drop-shadow(0 0 0 rgba(238, 181, 10, 0.692)) drop-shadow(0 0 4px rgba(255, 193, 7, 0.8));
 }
 
 .btn-compartilhar img:hover,
@@ -194,13 +196,40 @@
   margin-bottom: 60px;;
 }
 
+.titulo-conteiner{
+  color: #ffc107
+}
+
+.checkbox-custom {
+  accent-color: #ffc107 !important; /* cor interna do checkbox (moderna e compatível com a maioria dos navegadores) */
+}
+
+.checkbox-custom:checked {
+  box-shadow: 0 0 0.4rem 0.2rem #ffc107; /* sombra dourada */
+  border-color: #ffc107;
+}
+
+.form-check-input {
+  cursor: pointer;
+}
+
+.form-check-input:checked {
+    box-shadow: 0 0 5px 2px #ffc107 !important;
+    border-color: #ffc107;
+    background-color: #ffc107;
+  }
+
+
   </style>
 </head>
 <body>
   <nav class="navbar navbar-expand-lg">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">ARENA 88 SPORT CLUB</a>
-    </div>
+     <div class="container-fluid">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+          <img class="navbar-brand" src="icones/logoarena88.png" alt="Logo" height="30" />
+          <span>ARENA 88 SPORT CLUB</span>
+        </a>
+      </div>
   </nav>
 
   <!-- HOME -->
@@ -218,7 +247,7 @@
     </div>
     <div class="carousel-item h-100 position-relative">
       <img src="carrossel_home/img3.jpg" class="d-block w-100" alt="Imagem 3">
-      <button class="carousel-action-btn" data-target="replay-container">VEJA SEU LANCE</button>
+      <button class="carousel-action-btn" data-target="replay-container">ARENA 88 REPLAY</button>
     </div>
   </div>
 
@@ -238,14 +267,16 @@
 
   <!-- BAR -->
   <div class="container mt-4 d-none" id="bar-container">
-    <h3 class="text-center">🍻 Bar</h3>
+    <h3 class="mb-3 fs-4 text-center text-md-start titulo-conteiner">ARENA 88 SPORT BAR<hr></h3>
+    <h2 class="mb-3 fs-4 text-center text-md-start">Nosso cantinho da Resenha!</h2>
     <p class="text-center">Conteúdo do Bar</p>
   </div>
 
      
               <!-- AGENDA -->
       <div class="container mt-4 d-none" id="agenda-container">
-        <h3 class="text-center mb-3">📅 Agendar Horário</h3>
+        <h3 class="mb-3 fs-4 text-center text-md-start titulo-conteiner">FUTEBOL SOCIETY <hr></h3>
+        <h2 class="mb-3 fs-4 text-center text-md-start">Agendar horário</h2>
 
         <div class="mb-3">
           <label for="data-agenda" class="form-label">Quando você quer jogar:</label>
@@ -264,13 +295,13 @@
 
         <!-- Onde aparecerá o formulário após escolher horário -->
         <div id="form-agendamento" class="d-none">
-          <h5 class="text-center">Solicitar Agendamento</h5>
+          <h5 class="text-center">Solicitar Agendamento*</h5>
           <form class="mt-3">
             <input type="hidden" id="ag-data" />
             <input type="hidden" id="ag-hora" />
 
             <div class="mb-2">
-              <label for="nome" class="form-label">Nome</label>
+              <label for="nome" class="form-label">Nome do Organizador</label>
               <input type="text" class="form-control" id="nome" required />
             </div>
 
@@ -279,7 +310,30 @@
               <input type="tel" class="form-control" id="telefone" required />
             </div>
 
-            <p class="text-warning small">Ao solicitar agendamento, aguarde retorno do estabelecimento para confirmação!</p>
+            <div class="form-check mb-2">
+              <input class="form-check-input checkbox-custom" type="checkbox" id="check1">
+              <label class="form-check-label text-warning" for="check1">
+                Estou ciente que <strong>APENAS</strong> é permitido jogar com chuteira <strong>SEM</strong> trava
+              </label>
+            </div>
+
+            <div class="form-check mb-2">
+              <input class="form-check-input checkbox-custom" type="checkbox" id="check2">
+              <label class="form-check-label text-warning" for="check2">
+                Autorizo a filmagem dos jogos para utilizar o <strong>Arena 88 REPLAY</strong> <small>(Saiba mais)</small>
+              </label>
+            </div>
+
+            <div class="form-check mb-3">
+              <input class="form-check-input checkbox-custom" type="checkbox" id="check3">
+              <label class="form-check-label text-warning fw-bold" for="check3">
+                Aceito todos os termos e condições <small class="fw-normal">(ver todos)</small>
+              </label>
+            </div>
+
+
+
+            <p class="text-warning small">*Ao solicitar agendamento, aguarde retorno do estabelecimento para confirmação!</p>
 
             <div class="text-center">
               <a id="btn-agendar" href="#" target="_blank" class="btn btn-warning">Solicitar Agendamento</a>
@@ -292,6 +346,7 @@
 
   <!-- REPLAY -->
   <div class="container mt-4 d-none" id="replay-container">
+    <h3 class="mb-3 fs-4 text-center text-md-start titulo-conteiner">ARENA 88 REPLAY<hr></h3>
     <h2 class="mb-3 fs-4 text-center text-md-start">Filtrar Replays</h2>
     <form id="filter-form">
       <div class="row g-3 align-items-end">
@@ -331,7 +386,7 @@
   </div>
 
   <!-- MENU FIXO -->
-  <nav class="navbar fixed-bottom bg-dark border-top border-secondary">
+  <nav class="navbar fixed-bottom  border-top border-secondary">
     <div class="container-fluid d-flex justify-content-around py-2">
       <button class="btn btn-dark btn-menu active" data-target="home-container">
         <img src="icones/inicio.png" width="24" height="24" />
@@ -396,6 +451,19 @@
       return videos;
     }
 
+     function formatarDataHora(nomeArquivo) {
+        // Espera formato tipo: replay_20250729_013434_web.mp4
+        const regex = /replay_(\d{4})(\d{2})(\d{2})_(\d{2})(\d{2})(\d{2})/;
+        const match = nomeArquivo.match(regex);
+
+        if (!match) return "Data inválida";
+
+        const [_, ano, mes, dia, hora, minuto, segundo] = match;
+
+        return `${dia}/${mes}/${ano} às ${hora}:${minuto}:${segundo}`;
+      }
+
+
     function exibirVideos(lista) {
       videoContainer.innerHTML = "";
       if (lista.length === 0) {
@@ -413,7 +481,9 @@
                 Seu navegador não suporta vídeos.
               </video>
               <div class="card-body text-center">
-                <p>${video}</p>
+                  <h6 style="color: #ffc107; font-size: 0.95rem; margin-bottom: 0; font-weight: bold;">${formatarDataHora(video)}</h6>
+                      <p style="font-size: 0.8rem; color: #666;">${video}</p>
+
                 <div class="d-flex justify-content-center gap-2">
                   <button class="btn btn-dark btn-sm btn-compartilhar" data-video="${video}" title="Compartilhar replay">
                     <img src="icones/share.png" alt="Compartilhar" width="20" height="20" /> Compartilhar
@@ -558,6 +628,9 @@
 
       const buscarBtn = document.getElementById("buscar-horarios");
       const dataInput = document.getElementById("data-agenda");
+          if (dataInput) {
+            dataInput.value = new Date().toISOString().split("T")[0];
+          }
       const horariosContainer = document.getElementById("horarios-livres");
       const tagsContainer = document.getElementById("tags-horarios");
       const formAgendamento = document.getElementById("form-agendamento");
@@ -626,10 +699,12 @@
 
         formAgendamento.classList.remove("d-none");
 
-        btnAgendar.onclick = () => {
+        btnAgendar.onclick = (event) => {
           const nome = document.getElementById("nome").value.trim();
           const telefone = document.getElementById("telefone").value.trim();
+
           if (!nome || !telefone) {
+            event.preventDefault(); // Impede que o link seja seguido
             alert("Por favor, preencha nome e telefone!");
             return;
           }
@@ -673,5 +748,37 @@
 });
 
 </script>
+
+  <script>
+  document.getElementById("telefone").addEventListener("input", function (e) {
+    let value = e.target.value.replace(/\D/g, "");
+
+    if (value.length > 11) value = value.slice(0, 11);
+
+    if (value.length <= 10) {
+      value = value.replace(/^(\d{2})(\d{4})(\d{0,4})/, "($1) $2-$3");
+    } else {
+      value = value.replace(/^(\d{2})(\d{5})(\d{0,4})/, "($1) $2-$3");
+    }
+
+    e.target.value = value;
+  });
+  </script>
+
+  <script>
+      document.getElementById('check3').addEventListener('change', function () {
+      const check1 = document.getElementById('check1');
+      const check2 = document.getElementById('check2');
+
+      if (this.checked) {
+        check1.checked = true;
+        check2.checked = true;
+        check1.dispatchEvent(new Event('change'));
+        check2.dispatchEvent(new Event('change'));
+      }
+    });
+
+  </script>
+
 </body>
 </html>
